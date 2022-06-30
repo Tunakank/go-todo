@@ -1,0 +1,29 @@
+{{template "header" .}}
+<p>{{.Message}}</p>
+
+<h4 class="mt-4">メモ・動画一覧</h4>
+{{range $n,$Itm := .Plist}}
+<div class="media border m-1 p-2">
+    <a href="/detail?mid={{$Itm.Model.ID}}">
+        <img class="mr-3" src="https://img.youtube.com/vi/{{$Itm.Address}}/default.jpg" alt="Generic placeholder image">
+    </a>
+    <div class="media-body">
+        <h5 class="mt-0">{{$Itm.Title}}</h5>
+        {{$Itm.Message}}
+    </div>
+</div>
+{{end}}
+
+<h4 class="mt-4">リスト一覧</h4>
+{{range $n,$Itm := .Glist}}
+<div class="media border m-1 p-2">
+    <div class="media-body">
+        <a href="/list?gid={{$Itm.ID}}">
+            <h5 class="mt-0">{{$Itm.Name}}</h5>
+        </a>
+        {{$Itm.Message}}
+    </div>
+</div>
+{{end}}
+
+{{template "footer" .}}

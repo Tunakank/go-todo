@@ -1,0 +1,12 @@
+// migrate実行する際に使用する
+// このファイルをmain.goにし、go-todoフォルダ直下に移動して実行
+
+package main
+
+import (
+	"github.com/Tunakank/go-todo/my"
+)
+
+func main() {
+	my.Migrate()
+}

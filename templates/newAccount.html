@@ -1,0 +1,18 @@
+{{ template "header" .}}
+<h4>{{.Message}}</h4>
+<form action="/new-account" method="post">
+    <div class="form-group">
+        <label for="Account">メールアドレス</label>
+        <input type="mail" class="form-control" id="account" name="account">
+    </div>
+    <div class="form-group">
+        <label for="nickname">ニックネーム</label>
+        <input type="text" class="form-control" id="nickname" name="nickname">
+    </div>
+    <div class="form-group">
+        <label for="pass">パスワード</label>
+        <input type="password" class="form-control" id="pass" name="pass">
+    </div>
+    <button type="submit" class="btn btn-primary">アカウント作成</button>
+</form>
+{{ template "footer" .}}

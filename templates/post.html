@@ -1,0 +1,35 @@
+{{ template "header" .}}
+<p>{{.Memo.Title}}</p>
+
+<h4 class="mt-4">投稿された動画</h4>
+
+<div class="card m-1 p-2 text-center">
+    <div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{.Memo.Address}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="card-body">
+        <h5 class="mt-0">{{.Memo.Message}}</h5>
+    </div>
+</div>
+
+<form method="post" action="/detail?mid={{.Memo.ID}}">
+    <div class="form-group mt-4">
+        <label for="message" class="h6">コメント</label>
+        <textarea class="form-control" id="message" name="message"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">投稿する</button>
+</form>
+<h4 class="mt-4">コメント一覧</h4>
+{{range $n,$Itm := .Clist}}
+<div class="media border m-1 p-2">
+    <div class="media-body">
+        <h6 class="mt-0">{{$Itm.Comment.Message}} ({{$Itm.Name}})</h6>
+    </div>
+</div>
+{{end}}
+
+<h4 class="mt-4">動画編集</h4>
+<a class="btn btn-primary" href="/edit?mid={{.Memo.ID}}">修正する</a>
+<a class="btn btn-danger" href="/delete?mid={{.Memo.ID}}">削除する</a>
+
+{{template "footer" .}}
